@@ -5,7 +5,7 @@ namespace Aboldyrev;
 
 use Carbon\Carbon;
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 
 
@@ -22,13 +22,6 @@ class WebClient
 	 * @var Cache $cache
 	 */
 	protected $cache;
-
-	/**
-	 * Объект клиента
-	 *
-	 * @var Client
-	 */
-	protected $client;
 
 	/**
 	 * Время ожидания ответа
@@ -407,7 +400,6 @@ class WebClient
 
 	protected function __construct(string $cacheFolder) {
 		$this->cache = new Cache($cacheFolder);
-		$this->client = new Client();
 	}
 
 
@@ -461,6 +453,8 @@ class WebClient
 
 
 	protected function sendRequest(string $url) {
+		$client = new Client();
+
 		$options = [
 			RequestOptions::ALLOW_REDIRECTS => true,
 			RequestOptions::CONNECT_TIMEOUT => $this->timeout,
@@ -482,28 +476,17 @@ class WebClient
 
 			$this->wait();
 
-			$response = $this->client->request($this->method, $url, $options);
+			$request = new Request($this->method, $url);
+			$response = $client->send($request, $options);
 
 			$this->lastRequestTime = Carbon::now();
 
-			if ($this->checkResult($response)) {
-				return $response->getBody();
+			if ($response->getStatusCode() < 300) {
+				return $response->getBody()->getContents();
 			}
 		}
 
 		return NULL;
-	}
-
-
-	/**
-	 * Проверка корректности ответа
-	 *
-	 * @param Response $response
-	 *
-	 * @return bool
-	 */
-	protected function checkResult(Response $response):bool {
-		return $response->getStatusCode() < 300 && mb_strlen($response->getBody());
 	}
 
 

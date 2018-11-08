@@ -220,13 +220,7 @@ class Cache
 	 * @return string
 	 */
 	protected function getSiteName(string $url):string {
-		$host = $this->getHost($url);
-
-		if (is_string($host) && mb_strlen($host)) {
-			return $host;
-		}
-
-		return 'unknown';
+		return $this->getHost($url);
 	}
 
 

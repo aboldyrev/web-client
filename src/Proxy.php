@@ -12,28 +12,28 @@ class Proxy
 	/**
 	 * Хост
 	 *
-	 * @var string
+	 * @var string $proxy
 	 */
 	protected $proxy;
 
 	/**
 	 * Порт
 	 *
-	 * @var string|null
+	 * @var string|null $port
 	 */
 	protected $port = NULL;
 
 	/**
 	 * Пользователь
 	 *
-	 * @var string|null
+	 * @var string|null $username
 	 */
 	protected $username = NULL;
 
 	/**
 	 * Пароль
 	 *
-	 * @var string|null
+	 * @var string|null $password
 	 */
 	protected $password = NULL;
 
@@ -80,20 +80,22 @@ class Proxy
 	 * @param string|NULL $user
 	 * @param string|NULL $password
 	 *
-	 * @return array
+	 * @return void
 	 */
-	protected function prepareAccount(string $userPass, string $user = NULL, string $password = NULL):array {
-		$default_user = NULL;
-		$default_pass = NULL;
+	protected function setAccount(string $userPass, string $user = NULL, string $password = NULL):void {
+		$this->username = $userPass;
 
 		if (mb_stripos($userPass, ':')) {
-			list($default_user, $default_pass) = explode(':', $userPass);
+			list($this->username, $this->password) = explode(':', $userPass);
 		}
 
-		return [
-			$user ?: $default_user,
-			$password ?: $default_pass,
-		];
+		if (!is_null($user)) {
+			$this->username = $user;
+		}
+
+		if (!is_null($password)) {
+			$this->password = $password;
+		}
 	}
 
 
@@ -103,20 +105,16 @@ class Proxy
 	 * @param string      $hostPort
 	 * @param string|NULL $port
 	 *
-	 * @return array
+	 * @return void
 	 */
-	protected function prepareAddress(string $hostPort, string $port = NULL):array {
-		$default_host = NULL;
-		$default_port = NULL;
-
+	protected function setAddress(string $hostPort, string $port = NULL):void {
 		if (mb_stripos($hostPort, ':')) {
-			list($default_host, $default_port) = explode(':', $hostPort);
+			list($this->proxy, $this->port) = explode(':', $hostPort);
 		}
 
-		return [
-			$hostPort ?: $default_host,
-			$port ?: $default_port,
-		];
+		if ($port) {
+			$this->port = $port;
+		}
 	}
 
 
@@ -125,9 +123,16 @@ class Proxy
 
 		if (mb_stripos($proxy, '@') !== false) {
 			list($user_pass, $this->proxy) = explode('@', $proxy);
-			list($this->username, $this->password) = $this->prepareAccount($user_pass, $username, $password);
 		}
 
-		list($this->proxy, $this->port) = $this->prepareAddress($this->proxy, $port);
+		if (!is_null($username)) {
+			$user_pass = $username;
+		}
+
+		if (isset($user_pass)) {
+			$this->setAccount($user_pass, $username, $password);
+		}
+
+		$this->setAddress($this->proxy, $port);
 	}
 }
