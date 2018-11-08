@@ -1,0 +1,22 @@
+{
+	"name": "aboldyrev/web-client",
+	"description": "Веб-клиент с кешированием файлов",
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Andrew Boldyrev",
+			"email": "andreybold@bk.ru"
+		}
+	],
+	"require": {
+		"guzzlehttp/guzzle": "^6.3",
+		"symfony/filesystem": "^4.1",
+		"nesbot/carbon": "^2.5"
+	},
+	"autoload": {
+		"psr-4": {
+			"Aboldyrev\\": "src/"
+		}
+	}
+}

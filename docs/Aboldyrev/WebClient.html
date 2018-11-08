@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Aboldyrev\WebClient | Web client</title>
+
+            <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/sami.css">
+        <script src="../js/jquery-1.11.1.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/typeahead.min.js"></script>
+        <script src="../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Aboldyrev_WebClient" data-root-path="../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../index.html">Web client</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../classes.html">Classes</a></li>
+                                            <li><a href="../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../interfaces.html">Interfaces</a></li>
+                    <li><a href="../traits.html">Traits</a></li>
+                    <li><a href="../doc-index.html">Index</a></li>
+                    <li><a href="../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../Aboldyrev.html">Aboldyrev</a></li><li class="backslash">\</li><li>WebClient</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            WebClient
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>WebClient</strong>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>Класс клиента</p>                                </div>
+    
+    
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_cache">
+                                        protected                                        <a href="../Aboldyrev/Cache.html"><abbr title="Aboldyrev\Cache">Cache</abbr></a>
+                </td>
+                <td>$cache</td>
+                <td class="last">Объект кеша</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_client">
+                                        protected                                        <abbr title="GuzzleHttp\Client">Client</abbr>
+                </td>
+                <td>$client</td>
+                <td class="last">Объект клиента</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_timeout">
+                                        protected                                        int
+                </td>
+                <td>$timeout</td>
+                <td class="last">Время ожидания ответа</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_try">
+                                        protected                                        int
+                </td>
+                <td>$try</td>
+                <td class="last">Количество попыток</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_useProxy">
+                                        protected                                        bool
+                </td>
+                <td>$useProxy</td>
+                <td class="last">Флаг использования прокси</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_proxies">
+                                        protected                                        <a href="../Aboldyrev/Proxy.html"><abbr title="Aboldyrev\Proxy">Proxy</abbr></a>[]
+                </td>
+                <td>$proxies</td>
+                <td class="last">Список доступных прокси</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_userAgents">
+                                        protected                                        array
+                </td>
+                <td>$userAgents</td>
+                <td class="last">Список доступных user-agent'ов</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_useWait">
+                                        protected                                        bool
+                </td>
+                <td>$useWait</td>
+                <td class="last">Флаг использования задержки перед запросом</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_wait">
+                                        protected                                        null|float
+                </td>
+                <td>$wait</td>
+                <td class="last">Последнее значение времени задержки перед запросом</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_url">
+                                        protected                                        string
+                </td>
+                <td>$url</td>
+                <td class="last">Последняя использованная ссылка</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_method">
+                                        protected                                        string
+                </td>
+                <td>$method</td>
+                <td class="last">Последний использованный метод</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_params">
+                                        protected                                        array
+                </td>
+                <td>$params</td>
+                <td class="last">Последний использованный список параметров</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_proxy">
+                                        protected                                        null|string
+                </td>
+                <td>$proxy</td>
+                <td class="last">Последний использованный прокси</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_userAgent">
+                                        protected                                        null|string
+                </td>
+                <td>$userAgent</td>
+                <td class="last">Последний использованный user-agent</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_lastRequestTime">
+                                        protected                                        <abbr title="Carbon\Carbon">Carbon</abbr>
+                </td>
+                <td>$lastRequestTime</td>
+                <td class="last">Время последнего запроса</td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_create">create</a>(string $cacheFolder)
+        
+                                            <p>Создание объекта клиента</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTimeout">setTimeout</a>(int $timeout)
+        
+                                            <p>Устанавливает время ожидания ответа</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTry">setTry</a>(int $try)
+        
+                                            <p>Устанавливает количество попыток отправки запроса</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setUseProxy">setUseProxy</a>(bool $use)
+        
+                                            <p>Устанавливает флаг использования прокси</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setProxies">setProxies</a>(string|array $proxies, string $port = NULL, string $username = NULL, string $password = NULL)
+        
+                                            <p>Обновляет список прокси</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setUserAgents">setUserAgents</a>(array|string|null $userAgents = NULL)
+        
+                                            <p>Обновляет список user-agent'ов</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setUseWait">setUseWait</a>(bool $use)
+        
+                                            <p>Устанавливает флаг использования задержки перед запросом</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setWait">setWait</a>(float $wait = NULL)
+        
+                                            <p>Устанавливает время задержки перед запросом</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setMethod">setMethod</a>(string $method)
+        
+                                            <p>Установка метода запроса</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setParams">setParams</a>(array $params = [])
+        
+                                            <p>Установка параметров запроса</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_updateProxy">updateProxy</a>()
+        
+                                            <p>Обновляет текущий прокси</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Aboldyrev/Cache.html"><abbr title="Aboldyrev\Cache">Cache</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCache">getCache</a>()
+        
+                                            <p>Возвращает объект кеша</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    null|string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getContent">getContent</a>(string $url, string $mimeType = NULL)
+        
+                                            <p>Получить содержимое URL</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getFiles">getFiles</a>(array $links, string $folder, bool $useCache = false, bool $toString = false)
+        
+                                            <p>Скачивание списка файлов</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getFile">getFile</a>(string $link, string $folder, bool $useCache = false)
+        
+                                            <p>Скачивание файла</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(string $cacheFolder)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|<a href="../Aboldyrev/Proxy.html"><abbr title="Aboldyrev\Proxy">Proxy</abbr></a>|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getProxy">getProxy</a>(bool $asObject = false)
+        
+                                            <p>Возвращает случайный прокси из списка доступных</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getUserAgent">getUserAgent</a>()
+        
+                                            <p>Возвращает случайный user-agent из списка доступных. Нужно для имитации живых запросов и снижения вероятности блокировки</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkScheme">checkScheme</a>(string $url)
+        
+                                            <p>Проверяет присутствует ли протокол в запросе и если нет, добавляет http</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_sendRequest">sendRequest</a>(string $url)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkResult">checkResult</a>(<abbr title="GuzzleHttp\Psr7\Response">Response</abbr> $response)
+        
+                                            <p>Проверка корректности ответа</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_wait">wait</a>()
+        
+                                            <p>Ставит задержку перед отправкой запроса если это настроили. Необходимо для имитации реальных запросов.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_create">
+        <div class="location">at         line 134</div>
+        <code>        static            <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+    <strong>create</strong>(string $cacheFolder)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Создание объекта клиента</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$cacheFolder</td>
+                <td>директория для хранения кеша</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTimeout">
+        <div class="location">at         line 146</div>
+        <code>                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+    <strong>setTimeout</strong>(int $timeout)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Устанавливает время ожидания ответа</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$timeout</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTry">
+        <div class="location">at         line 160</div>
+        <code>                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+    <strong>setTry</strong>(int $try)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Устанавливает количество попыток отправки запроса</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$try</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setUseProxy">
+        <div class="location">at         line 174</div>
+        <code>                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+    <strong>setUseProxy</strong>(bool $use)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Устанавливает флаг использования прокси</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$use</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setProxies">
+        <div class="location">at         line 191</div>
+        <code>                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+    <strong>setProxies</strong>(string|array $proxies, string $port = NULL, string $username = NULL, string $password = NULL)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Обновляет список прокси</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|array</td>
+                <td>$proxies</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$port</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$username</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$password</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setUserAgents">
+        <div class="location">at         line 215</div>
+        <code>                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+    <strong>setUserAgents</strong>(array|string|null $userAgents = NULL)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Обновляет список user-agent'ов</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|string|null</td>
+                <td>$userAgents</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setUseWait">
+        <div class="location">at         line 239</div>
+        <code>                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+    <strong>setUseWait</strong>(bool $use)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Устанавливает флаг использования задержки перед запросом</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$use</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setWait">
+        <div class="location">at         line 253</div>
+        <code>                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+    <strong>setWait</strong>(float $wait = NULL)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Устанавливает время задержки перед запросом</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float</td>
+                <td>$wait</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setMethod">
+        <div class="location">at         line 272</div>
+        <code>                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+    <strong>setMethod</strong>(string $method)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Установка метода запроса</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setParams">
+        <div class="location">at         line 286</div>
+        <code>                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+    <strong>setParams</strong>(array $params = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Установка параметров запроса</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$params</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updateProxy">
+        <div class="location">at         line 298</div>
+        <code>                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+    <strong>updateProxy</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Обновляет текущий прокси</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCache">
+        <div class="location">at         line 312</div>
+        <code>                    <a href="../Aboldyrev/Cache.html"><abbr title="Aboldyrev\Cache">Cache</abbr></a>
+    <strong>getCache</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Возвращает объект кеша</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Aboldyrev/Cache.html"><abbr title="Aboldyrev\Cache">Cache</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getContent">
+        <div class="location">at         line 325</div>
+        <code>                    null|string
+    <strong>getContent</strong>(string $url, string $mimeType = NULL)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Получить содержимое URL</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$url</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$mimeType</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>null|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFiles">
+        <div class="location">at         line 358</div>
+        <code>                    array|string
+    <strong>getFiles</strong>(array $links, string $folder, bool $useCache = false, bool $toString = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Скачивание списка файлов</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$links</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$folder</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$useCache</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$toString</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFile">
+        <div class="location">at         line 378</div>
+        <code>                    string
+    <strong>getFile</strong>(string $link, string $folder, bool $useCache = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Скачивание файла</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$link</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$folder</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$useCache</td>
+                <td>флаг указывающий использовать ли кеширование</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 408</div>
+        <code>            protected        
+    <strong>__construct</strong>(string $cacheFolder)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$cacheFolder</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getProxy">
+        <div class="location">at         line 421</div>
+        <code>            protected        string|<a href="../Aboldyrev/Proxy.html"><abbr title="Aboldyrev\Proxy">Proxy</abbr></a>|null
+    <strong>getProxy</strong>(bool $asObject = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Возвращает случайный прокси из списка доступных</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$asObject</td>
+                <td>флаг, указывающий возвращать прокси в виде объекта</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|<a href="../Aboldyrev/Proxy.html"><abbr title="Aboldyrev\Proxy">Proxy</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUserAgent">
+        <div class="location">at         line 438</div>
+        <code>            protected        string
+    <strong>getUserAgent</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Возвращает случайный user-agent из списка доступных. Нужно для имитации живых запросов и снижения вероятности блокировки</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkScheme">
+        <div class="location">at         line 452</div>
+        <code>            protected        string
+    <strong>checkScheme</strong>(string $url)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Проверяет присутствует ли протокол в запросе и если нет, добавляет http</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$url</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sendRequest">
+        <div class="location">at         line 463</div>
+        <code>            protected        
+    <strong>sendRequest</strong>(string $url)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$url</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkResult">
+        <div class="location">at         line 505</div>
+        <code>            protected        bool
+    <strong>checkResult</strong>(<abbr title="GuzzleHttp\Psr7\Response">Response</abbr> $response)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Проверка корректности ответа</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="GuzzleHttp\Psr7\Response">Response</abbr></td>
+                <td>$response</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_wait">
+        <div class="location">at         line 515</div>
+        <code>            protected        <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+    <strong>wait</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Ставит задержку перед отправкой запроса если это настроили. Необходимо для имитации реальных запросов.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>
