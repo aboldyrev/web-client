@@ -1,2 +1,7 @@
 vendor/
 sami_cache/
+/coverage.xml
+/coverage/
+/composer.lock
+tests/cache/
+tests/files/
