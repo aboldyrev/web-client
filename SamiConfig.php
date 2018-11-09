@@ -1,6 +1,6 @@
 <?php
 
-use Sami\RemoteRepository\BitBucketRemoteRepository;
+use Sami\RemoteRepository\GitHubRemoteRepository;
 use Sami\Sami;
 use Symfony\Component\Finder\Finder;
 
@@ -18,6 +18,6 @@ return new Sami($iterator, [
 	'title'                => 'Web client',
 	'build_dir'            => __DIR__ . '/docs',
 	'cache_dir'            => __DIR__ . '/sami_cache',
-//	'remote_repository'    => new BitBucketRemoteRepository('kitchain/base', dirname($dir)),
+	'remote_repository'    => new GitHubRemoteRepository('aboldyrev/web-client', dirname($dir)),
 	'default_opened_level' => 1,
 ]);

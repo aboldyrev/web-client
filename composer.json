@@ -10,6 +10,7 @@
 		}
 	],
 	"require": {
+		"php": "~7.1",
 		"guzzlehttp/guzzle": "^6.3",
 		"symfony/filesystem": "^4.1",
 		"nesbot/carbon": "~1.34"
