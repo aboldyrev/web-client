@@ -17,6 +17,13 @@ use GuzzleHttp\RequestOptions;
 class WebClient
 {
 	/**
+	 * Объект клиента
+	 *
+	 * @var Client $client
+	 */
+	protected $client;
+
+	/**
 	 * Объект кеша
 	 *
 	 * @var Cache $cache
@@ -121,11 +128,12 @@ class WebClient
 	 * Создание объекта клиента
 	 *
 	 * @param string $cacheFolder директория для хранения кеша
+	 * @param Client $client
 	 *
 	 * @return WebClient
 	 */
-	public static function create(string $cacheFolder):self {
-		return new static($cacheFolder);
+	public static function create(string $cacheFolder, Client $client = NULL):self {
+		return new static($cacheFolder, $client);
 	}
 
 
@@ -182,13 +190,15 @@ class WebClient
 	 * @return WebClient
 	 */
 	public function setProxies($proxies, string $port = NULL, string $username = NULL, string $password = NULL):self {
-		if (is_array($proxies)) {
-			$this->proxies = $proxies;
-		} elseif (is_string($proxies)) {
+		if (is_string($proxies)) {
 			$proxies = explode(PHP_EOL, $proxies);
+		}
 
-			if (is_array($proxies)) {
-				foreach ($proxies as $proxy) {
+		if (is_array($proxies)) {
+			$this->proxies = [];
+
+			foreach ($proxies as $proxy) {
+				if (mb_strlen($proxy)) {
 					$this->proxies[] = Proxy::create($proxy, $port, $username, $password);
 				}
 			}
@@ -215,7 +225,7 @@ class WebClient
 		}
 
 		if (is_array($userAgents) && count($userAgents)) {
-			$this->userAgents = $userAgents;
+			$this->userAgents = array_diff($userAgents, [ '' ]);
 		}
 
 		return $this;
@@ -277,7 +287,7 @@ class WebClient
 	 * @return WebClient
 	 */
 	public function setParams(array $params = []):self {
-		$this->method = $params;
+		$this->params = $params;
 
 		return $this;
 	}
@@ -398,8 +408,12 @@ class WebClient
 	}
 
 
-	protected function __construct(string $cacheFolder) {
+	protected function __construct(string $cacheFolder, Client $client = NULL) {
 		$this->cache = new Cache($cacheFolder);
+
+		if (isset($client)) {
+			$this->client = $client;
+		}
 	}
 
 
@@ -423,37 +437,23 @@ class WebClient
 
 
 	/**
-	 * Возвращает случайный user-agent из списка доступных. Нужно для имитации живых запросов и снижения вероятности блокировки
+	 * Обновляет user-agent
 	 *
-	 * @return string
+	 * @return void
 	 */
-	protected function getUserAgent():string {
+	protected function updateUserAgent():void {
 		$key = array_rand($this->userAgents);
 
-		return $this->userAgents[ $key ];
-	}
-
-
-	/**
-	 * Проверяет присутствует ли протокол в запросе и если нет, добавляет http
-	 *
-	 * @param string $url
-	 *
-	 * @return string
-	 */
-	protected function checkScheme(string $url):string {
-		$has_scheme = parse_url($url, PHP_URL_SCHEME);
-
-		if (is_null($has_scheme)) {
-			$url = 'http://' . $url;
-		}
-
-		return $url;
+		$this->userAgent = $this->userAgents[ $key ];
 	}
 
 
 	protected function sendRequest(string $url) {
-		$client = new Client();
+		if (is_null($this->client)) {
+			$client = new Client();
+		} else {
+			$client = clone $this->client;
+		}
 
 		$options = [
 			RequestOptions::ALLOW_REDIRECTS => true,
@@ -480,6 +480,8 @@ class WebClient
 			$response = $client->send($request, $options);
 
 			$this->lastRequestTime = Carbon::now();
+			$this->updateUserAgent();
+			$this->updateProxy();
 
 			if ($response->getStatusCode() < 300) {
 				return $response->getBody()->getContents();
