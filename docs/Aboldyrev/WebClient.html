@@ -331,6 +331,16 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_updateUserAgent">updateUserAgent</a>()
+        
+                                            <p>Обновляет текущий user-agent</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../Aboldyrev/Cache.html"><abbr title="Aboldyrev\Cache">Cache</abbr></a>
                 </div>
                 <div class="col-md-8 type">
@@ -392,12 +402,12 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    void
+                    string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_updateUserAgent">updateUserAgent</a>()
+                    <a href="#method_getUserAgent">getUserAgent</a>()
         
-                                            <p>Обновляет user-agent</p>                </div>
+                                            <p>Возвращает случайный user-agent из списка доступных. Нужно для имитации живых запросов и снижения вероятности блокировки</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -878,8 +888,38 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getCache">
+                    <h3 id="method_updateUserAgent">
         <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L315">line 315</a></div>
+        <code>                    <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
+    <strong>updateUserAgent</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Обновляет текущий user-agent</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCache">
+        <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L327">line 327</a></div>
         <code>                    <a href="../Aboldyrev/Cache.html"><abbr title="Aboldyrev\Cache">Cache</abbr></a>
     <strong>getCache</strong>()
         </code>
@@ -909,7 +949,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getContent">
-        <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L328">line 328</a></div>
+        <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L340">line 340</a></div>
         <code>                    null|string
     <strong>getContent</strong>(string $url, string $mimeType = NULL)
         </code>
@@ -954,7 +994,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getFiles">
-        <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L361">line 361</a></div>
+        <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L373">line 373</a></div>
         <code>                    array|string
     <strong>getFiles</strong>(array $links, string $folder, bool $useCache = false, bool $toString = false)
         </code>
@@ -1009,7 +1049,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getFile">
-        <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L381">line 381</a></div>
+        <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L393">line 393</a></div>
         <code>                    string
     <strong>getFile</strong>(string $link, string $folder, bool $useCache = false)
         </code>
@@ -1059,7 +1099,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L411">line 411</a></div>
+        <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L423">line 423</a></div>
         <code>            protected        
     <strong>__construct</strong>(string $cacheFolder, <abbr title="GuzzleHttp\Client">Client</abbr> $client = NULL)
         </code>
@@ -1093,7 +1133,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getProxy">
-        <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L427">line 427</a></div>
+        <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L439">line 439</a></div>
         <code>            protected        string|<a href="../Aboldyrev/Proxy.html"><abbr title="Aboldyrev\Proxy">Proxy</abbr></a>|null
     <strong>getProxy</strong>(bool $asObject = false)
         </code>
@@ -1132,10 +1172,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_updateUserAgent">
-        <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L444">line 444</a></div>
-        <code>            protected        void
-    <strong>updateUserAgent</strong>()
+                    <h3 id="method_getUserAgent">
+        <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L456">line 456</a></div>
+        <code>            protected        string
+    <strong>getUserAgent</strong>()
         </code>
     </h3>
     <div class="details">
@@ -1143,14 +1183,14 @@
     
 
                     <div class="method-description">
-                                    <p>Обновляет user-agent</p>                                                </div>
+                                    <p>Возвращает случайный user-agent из списка доступных. Нужно для имитации живых запросов и снижения вероятности блокировки</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>void</td>
+            <td>string</td>
             <td></td>
         </tr>
     </table>
@@ -1163,7 +1203,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_sendRequest">
-        <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L451">line 451</a></div>
+        <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L463">line 463</a></div>
         <code>            protected        
     <strong>sendRequest</strong>(string $url)
         </code>
@@ -1192,7 +1232,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_wait">
-        <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L500">line 500</a></div>
+        <div class="location">at         <a href="https://github.com/aboldyrev/web-client/blob/master/src/WebClient.php#L520">line 520</a></div>
         <code>            protected        <a href="../Aboldyrev/WebClient.html"><abbr title="Aboldyrev\WebClient">WebClient</abbr></a>
     <strong>wait</strong>()
         </code>
