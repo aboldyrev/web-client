@@ -308,6 +308,18 @@ class WebClient
 
 
 	/**
+	 * Обновляет текущий user-agent
+	 *
+	 * @return WebClient
+	 */
+	public function updateUserAgent():self {
+		$this->userAgent = $this->getUserAgent();
+
+		return $this;
+	}
+
+
+	/**
 	 * Возвращает объект кеша
 	 *
 	 * @return Cache
@@ -437,14 +449,14 @@ class WebClient
 
 
 	/**
-	 * Обновляет user-agent
+	 * Возвращает случайный user-agent из списка доступных. Нужно для имитации живых запросов и снижения вероятности блокировки
 	 *
-	 * @return void
+	 * @return string
 	 */
-	protected function updateUserAgent():void {
+	protected function getUserAgent():string {
 		$key = array_rand($this->userAgents);
 
-		$this->userAgent = $this->userAgents[ $key ];
+		return $this->userAgents[ $key ];
 	}
 
 
@@ -453,6 +465,10 @@ class WebClient
 			$client = new Client();
 		} else {
 			$client = clone $this->client;
+		}
+
+		if (is_null($this->userAgent)) {
+			$this->updateUserAgent();
 		}
 
 		$options = [
@@ -464,13 +480,17 @@ class WebClient
 		];
 
 		for ($try = 1; $try <= $this->try; $try++) {
+			if ($this->useProxy && is_null($this->proxy)) {
+				$this->updateProxy();
+			}
+
 			$this->updateProxy();
 
 			if (count($this->params)) {
 				$options[ RequestOptions::FORM_PARAMS ] = $this->params;
 			}
 
-			if ($this->proxy) {
+			if ($this->useProxy && $this->proxy) {
 				$options[ RequestOptions::PROXY ] = $this->proxy;
 			}
 
