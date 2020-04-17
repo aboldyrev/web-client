@@ -123,6 +123,13 @@ class WebClient
 	 */
 	protected $lastRequestTime;
 
+	/**
+	 * Флаг работы кеша
+	 *
+	 * @var bool $useCache
+	 */
+	protected $useCache = true;
+
 
 	/**
 	 * Создание объекта клиента
@@ -293,6 +300,13 @@ class WebClient
 	}
 
 
+	public function setUseCache(bool $use):self {
+		$this->useCache = $use;
+
+		return $this;
+	}
+
+
 	/**
 	 * Обновляет текущий прокси
 	 *
@@ -339,7 +353,7 @@ class WebClient
 	 */
 	public function getContent(string $url, string $mimeType = NULL) {
 
-		if ($this->cache->check($url)) {
+		if ($this->useCache && $this->cache->check($url)) {
 			return $this->cache->get($url);
 		} else {
 			$response = $this->sendRequest($url);
