@@ -130,6 +130,16 @@ class WebClient
 	 */
 	protected $useCache = true;
 
+	/**
+	 * Заголовки запроса
+	 *
+	 * @var array $headers
+	 */
+	protected $headers = [];
+
+
+	protected $oneTimeHeader = true;
+
 
 	/**
 	 * Создание объекта клиента
@@ -302,6 +312,20 @@ class WebClient
 
 	public function setUseCache(bool $use):self {
 		$this->useCache = $use;
+
+		return $this;
+	}
+
+
+	public function setHeaders(array $headers):self {
+		$this->headers = $headers;
+
+		return $this;
+	}
+
+
+	public function setTimesHeaders(bool $oneTime):self {
+		$this->oneTimeHeader = $oneTime;
 
 		return $this;
 	}
@@ -510,12 +534,16 @@ class WebClient
 
 			$this->wait();
 
-			$request = new Request($this->method, $url);
+			$request = new Request($this->method, $url, $this->headers);
 			$response = $client->send($request, $options);
 
 			$this->lastRequestTime = Carbon::now();
 			$this->updateUserAgent();
 			$this->updateProxy();
+
+			if ($this->oneTimeHeader) {
+				$this->headers = [];
+			}
 
 			if ($response->getStatusCode() < 300) {
 				return $response->getBody()->getContents();
