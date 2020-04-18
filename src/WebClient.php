@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use Psr\Http\Message\StreamInterface;
 
 
 /**
@@ -137,8 +138,15 @@ class WebClient
 	 */
 	protected $headers = [];
 
-
+	/**
+	 * @var bool $oneTimeHeader
+	 */
 	protected $oneTimeHeader = true;
+
+	/**
+	 * @var string|null|resource|StreamInterface $body
+	 */
+	protected $body = NULL;
 
 
 	/**
@@ -328,6 +336,16 @@ class WebClient
 		$this->oneTimeHeader = $oneTime;
 
 		return $this;
+	}
+
+
+	/**
+	 * @param string|null|resource|StreamInterface $body
+	 *
+	 * @return WebClient
+	 */
+	public function setBody($body):self {
+		$this->body = $body;
 	}
 
 
@@ -534,9 +552,10 @@ class WebClient
 
 			$this->wait();
 
-			$request = new Request($this->method, $url, $this->headers);
+			$request = new Request($this->method, $url, $this->headers, $this->body);
 			$response = $client->send($request, $options);
 
+			$this->body = NULL;
 			$this->lastRequestTime = Carbon::now();
 			$this->updateUserAgent();
 			$this->updateProxy();
