@@ -346,6 +346,8 @@ class WebClient
 	 */
 	public function setBody($body):self {
 		$this->body = $body;
+
+		return $this;
 	}
 
 
