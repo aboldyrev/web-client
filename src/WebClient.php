@@ -406,7 +406,9 @@ class WebClient
 				return NULL;
 			}
 
-			$this->cache->put($url, $response);
+			if ($this->useCache) {
+				$this->cache->put($url, $response);
+			}
 
 			if (!is_null($mimeType) && !$this->cache->checkMimeType($url, $mimeType)) {
 				return NULL;
@@ -423,16 +425,15 @@ class WebClient
 	 *
 	 * @param array  $links
 	 * @param string $folder
-	 * @param bool   $useCache
 	 * @param bool   $toString
 	 *
 	 * @return array|string
 	 */
-	public function getFiles(array $links, string $folder, bool $useCache = false, bool $toString = false) {
+	public function getFiles(array $links, string $folder, bool $toString = false) {
 		$result = [];
 
 		foreach ($links as $link) {
-			$result[] = $this->getFile($link, $folder, $useCache);
+			$result[] = $this->getFile($link, $folder);
 		}
 
 		return $toString ? implode(',', $result) : $result;
@@ -444,11 +445,10 @@ class WebClient
 	 *
 	 * @param string $link
 	 * @param string $folder
-	 * @param bool   $useCache флаг указывающий использовать ли кеширование
 	 *
 	 * @return string
 	 */
-	public function getFile(string $link, string $folder, bool $useCache = false):string {
+	public function getFile(string $link, string $folder):string {
 		$filename = basename($link);
 
 		if (mb_substr($folder, -1) == '/') {
@@ -457,7 +457,7 @@ class WebClient
 			$path = $folder . '/' . $filename;
 		}
 
-		if ($useCache && $this->cache->check($link)) {
+		if ($this->useCache && $this->cache->check($link)) {
 			return $this->cache->getPath($link);
 		}
 
@@ -469,7 +469,7 @@ class WebClient
 			exec('mkdir -p ' . $folder);
 			file_put_contents($path, $file);
 
-			if ($useCache) {
+			if ($this->useCache) {
 				$this->cache->put($link, $file);
 			}
 		}
